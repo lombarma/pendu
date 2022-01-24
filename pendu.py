@@ -1,4 +1,4 @@
-import random
+from random import choice
 
 clearConsole5 = lambda: print("\n" * 5)
 clearConsole2 = lambda: print("\n" * 2)
@@ -90,12 +90,15 @@ def question():
     if a == 2:
         clearConsole2()
         mot_a_trouver = str(input("Entrer le mot à trouver : ")).strip()
-        clearConsole3()
+        clearConsole5()
+        clearConsole5()
+        clearConsole5()
+        clearConsole5()
         print(pendu(mot_a_trouver))
     elif a == 1:
         try:
             liste_mots = read_file(r"C:\Users\Maxime\Desktop\ESIEE\E2\PythonE2\data\mots.txt")
-            mot_aleatoire = random.choice(liste_mots)
+            mot_aleatoire = choice(liste_mots)
             print(pendu(mot_aleatoire))
         except FileNotFoundError:
             print("La bibliothèque de mots n'est pas disponible. Vous ne pouvez jouer qu'à deux.")
@@ -123,6 +126,8 @@ def pendu(mot):
             for index, letter in enumerate(mot):
                 if letter == lettre:
                     plateau[index] = lettre
+            print(HANGMANPICS[chances])
+            print(f"\nEssais restants : {essais} \n")
             print("".join(plateau) + '\n')
 
         elif lettre not in mot:
